@@ -1,0 +1,26 @@
+body {
+    margin: 0 auto;
+}
+
+#home-navbar {
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#home-user {
+    background-color: brown;
+}
+
+#home-kcal {
+    background-color: blueviolet;
+}
+
+#home-products {
+    background-color: beige;
+}
+
+#home-meals {
+    background-color: aqua;
+}

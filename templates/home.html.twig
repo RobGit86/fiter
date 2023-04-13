@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('home') }}
+        {{ encore_entry_script_tags('home') }}
+    {% endblock %}
+
+    <title>Dieta</title>
+</head>
+
+<body>
+
+    <div id="home-navbar">
+        <div id="home-user">
+            <div>{{ user.login }}</div>
+            <div><a href="{{ path('app_logout') }}">Wyloguj</a></div>
+        </div>
+
+        <div id="home-kcal">
+            <div>Kcal</div>
+            <div>
+                <form>
+                    <input id="home-kcal-input" type="number" min="0" max="10000" step="50" value={{ user.kcal }}>
+                </form>
+            </div>
+        </div>
+
+        <div id="home-pcf">
+            <div>
+                <input id="home-protein-input" type="number" min="0" max="100" step="1" value={{ user.protein }}>
+            </div>
+            <div>
+                <input id="home-carb-input" type="number" min="0" max="100" step="1" value={{ user.carb }}>
+            </div>
+            <div>
+                <input id="home-fat-input" type="number" min="0" max="100" step="1" value={{ user.fat }}>
+            </div>
+        </div>
+
+        <div id="home-meal-per-day">
+            <input id="home-meal-per-day-input" type="number" min="1" max="10" step="1" value={{ user.mealPerDay }}>
+        </div>
+
+    </div>
+
+    <div id="home-add-product">
+        <form action="/addProduct">
+            <label for="home-add-product-name">Produkt: </label>
+            <input id="home-add-product-name" name="name" type="text">
+            <label for="home-add-product-group">Grupa: </label>
+            <input id="home-add-product-group" name="group" type="text">
+            <label for="home-add-product-kcal100g">Kcal / 100g: </label>
+            <input id="home-add-product-kcal100g" name="kcal100g" type="text">
+            <label for="home-add-product-protein100g">Białko / 100g: </label>
+            <input id="home-add-product-protein100g" name="protein100g" type="text">
+            <label for="home-add-product-carb100g">Węglowodany / 100g: </label>
+            <input id="home-add-product-carb100g" name="carb100g" type="text">
+            <label for="home-add-product-fat100g">Tłuszcze / 100g: </label>
+            <input id="home-add-product-fat100g" name="fat100g" type="text">
+            <label for="home-add-product-portion">Porcja: </label>
+            <input id="home-add-product-portion" name="portion" type="text">
+            <button type="submit">Home</button>
+        </form>
+    </div>
+
+    <div id="home-products">
+        <h1>PRODUCTS</h1>
+
+        <table>
+            <tr>
+                <th>Nazwa</th>
+                <th>Grupa</th>
+                <th>kcal / 100g</th>
+                <th>białko / 100g</th>
+                <th>węglowodany / 100g</th>
+                <th>tłuszcz / 100g</th>
+                <th>porcja [g]</th>
+                <th>białko [g]</th>
+                <th>węglowodany [g]</th>
+                <th>tłuszcz [g]</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.groupFood }}</td>
+                <td>{{ product.kcal100g }}</td>
+                <td>{{ product.protein100g }}</td>
+                <td>{{ product.carb100g }}</td>
+                <td>{{ product.fat100g }}</td>
+                <td>{{ product.portionWhole }}</td>
+                <td>{{ product.protein }}</td>
+                <td>{{ product.carb }}</td>
+                <td>{{ product.fat }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="home-meals">
+        <h1>MEALS</h1>
+
+
+
+
+    </div>
+
+
+</body>
+</html> 
